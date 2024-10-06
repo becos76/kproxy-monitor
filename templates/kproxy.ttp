@@ -1,0 +1,18 @@
+## 
+## GOOD
+##
+## 2 Connected Devices
+## * 29118:mgr-skg-cr01:67661 -> 127.0.0.1:40014 (In1: 0.092757, Out1: 0.118906, In15: 0.090289, Out15: 0.145759). Last seen 2024-10-06T19:25:37.233040 (17.385s ago). Sources: 192.168.255.2. Channel highwater: 0, 0, 1. Flow: ipfix
+## * 29118:mgr-ath-cr01:66856 -> 127.0.0.1:40010 (In1: 0.908385, Out1: 0.944757, In15: 0.914357, Out15: 0.978781). Last seen 2024-10-06T19:25:54.143205 (475ms ago). Sources: 192.168.255.1. Channel highwater: 1, 1, 1. Flow: ipfix
+
+## 0 Unregistered Devices
+##
+##
+<group>
+{{ hc }}
+{{ connected }} Connected Devices
+    <group name="devices" method="table">
+* {{ cid }}:{{ device_name }}:{{ device_id }} -> 127.0.0.1:{{ pid | to_int }} (In1: {{ In1 | to_float }}, Out1: {{ Out1 | to_float}}, In15: {{ In15 | to_float}}, Out15: {{ Out15 | to_float}}). Last seen {{ timestamp }} ({{ last_seen }} ago). Sources: {{ device_ip }}.{{ ignore('.*') }} Flow: {{flow}}
+    </group>
+{{ unregistered }} Unregistered Devices
+</group>
